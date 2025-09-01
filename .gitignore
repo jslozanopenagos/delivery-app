@@ -1,0 +1,7 @@
+target/
+
+.idea/
+
+# Ignore all .txt files inside src/main/outputfiles/
+src/main/outputfiles/*.txt
+!src/main/outputfiles/

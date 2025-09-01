@@ -1,0 +1,6 @@
+==== FOOD DELIVERY APP ====
+1. Register
+2. Login
+3. Word counter
+4. Exit
+-> Choose an option:

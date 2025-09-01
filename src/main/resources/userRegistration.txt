@@ -1,0 +1,6 @@
+--- Registration ---
+1. Customer
+2. Courier
+3. Food establishment manager
+4. Back to main menu
+-> Tap your number choice (1-4) or the role:

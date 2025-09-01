@@ -1,0 +1,15 @@
+package com.solvd.delivery.model.interfaces;
+
+import com.solvd.delivery.enums.OrderStatus;
+
+public interface Payable {
+    void processPayment(double amountReceived, double amountToPay);
+
+    static boolean isValidAmount(double amount) {
+        return amount > 0;
+    }
+
+    default boolean isPaymentComplete(OrderStatus status) {
+        return status == OrderStatus.ACCEPTED;
+    }
+}

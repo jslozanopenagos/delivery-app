@@ -1,0 +1,7 @@
+Vehicle type to deliver:
+1. Walking.
+2. Bicycle.
+3. Car.
+4. Scooter.
+5. Step van.
+-> Choose vehicle type (1-5):
