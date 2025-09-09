@@ -1,4 +1,4 @@
-package com.solvd.delivery.controller.payment;
+package com.solvd.delivery.interfaces;
 
 import com.solvd.delivery.model.payments.Payment;
 

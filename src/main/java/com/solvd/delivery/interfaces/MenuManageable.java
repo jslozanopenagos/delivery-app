@@ -1,4 +1,4 @@
-package com.solvd.delivery.model.interfaces;
+package com.solvd.delivery.interfaces;
 
 import com.solvd.delivery.model.foodEstablishments.MenuItem;
 import com.solvd.delivery.model.foodEstablishments.FoodEstablishment;

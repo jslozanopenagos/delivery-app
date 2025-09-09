@@ -2,7 +2,7 @@ package com.solvd.delivery.model.locations;
 
 import com.solvd.delivery.model.users.Courier;
 import com.solvd.delivery.model.users.Customer;
-import com.solvd.delivery.model.interfaces.Trackable;
+import com.solvd.delivery.interfaces.Trackable;
 
 import java.util.List;
 import java.util.ArrayList;

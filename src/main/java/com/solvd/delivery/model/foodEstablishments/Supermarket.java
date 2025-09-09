@@ -1,6 +1,6 @@
 package com.solvd.delivery.model.foodEstablishments;
 
-import com.solvd.delivery.model.interfaces.Rateable;
+import com.solvd.delivery.interfaces.Rateable;
 
 import java.util.List;
 import java.util.ArrayList;

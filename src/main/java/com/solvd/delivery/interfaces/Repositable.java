@@ -1,4 +1,4 @@
-package com.solvd.delivery.repository;
+package com.solvd.delivery.interfaces;
 
 import java.util.List;
 import java.util.Optional;

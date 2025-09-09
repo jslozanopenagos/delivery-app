@@ -1,6 +1,7 @@
 package com.solvd.delivery.controller.payment;
 
 import com.solvd.delivery.enums.OrderStatus;
+import com.solvd.delivery.interfaces.PaymentProcessor;
 import com.solvd.delivery.model.payments.DigitalPayment;
 
 public class DigitalPaymentProcessor implements PaymentProcessor<DigitalPayment> {

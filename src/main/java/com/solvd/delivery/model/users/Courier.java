@@ -4,7 +4,7 @@ import com.solvd.delivery.enums.UserRole;
 import com.solvd.delivery.enums.VehicleType;
 import com.solvd.delivery.model.orders.Order;
 import com.solvd.delivery.model.locations.Location;
-import com.solvd.delivery.model.interfaces.Rateable;
+import com.solvd.delivery.interfaces.Rateable;
 
 import java.util.*;
 

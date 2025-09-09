@@ -1,5 +1,6 @@
 package com.solvd.delivery.repository;
 
+import com.solvd.delivery.interfaces.Repositable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

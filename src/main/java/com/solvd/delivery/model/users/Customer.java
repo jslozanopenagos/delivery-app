@@ -3,7 +3,7 @@ package com.solvd.delivery.model.users;
 import com.solvd.delivery.enums.UserRole;
 import com.solvd.delivery.model.orders.Order;
 import com.solvd.delivery.enums.PaymentMethod;
-import com.solvd.delivery.model.interfaces.Orderable;
+import com.solvd.delivery.interfaces.Orderable;
 
 import java.util.List;
 import java.util.Objects;

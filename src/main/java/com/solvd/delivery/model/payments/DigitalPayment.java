@@ -4,7 +4,7 @@ import com.solvd.delivery.enums.OrderStatus;
 import com.solvd.delivery.enums.PaymentMethod;
 import com.solvd.delivery.model.users.Courier;
 import com.solvd.delivery.model.users.Customer;
-import com.solvd.delivery.model.interfaces.Payable;
+import com.solvd.delivery.interfaces.Payable;
 
 import com.solvd.delivery.exceptions.PaymentProcessingException;
 

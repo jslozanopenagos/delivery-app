@@ -1,7 +1,7 @@
 package com.solvd.delivery.model.users;
 
 import com.solvd.delivery.enums.UserRole;
-import com.solvd.delivery.model.interfaces.MenuManageable;
+import com.solvd.delivery.interfaces.MenuManageable;
 import com.solvd.delivery.model.foodEstablishments.MenuItem;
 import com.solvd.delivery.model.foodEstablishments.Restaurant;
 import com.solvd.delivery.model.foodEstablishments.FoodEstablishment;

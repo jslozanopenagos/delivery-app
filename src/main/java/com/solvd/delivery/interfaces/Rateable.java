@@ -1,4 +1,4 @@
-package com.solvd.delivery.model.interfaces;
+package com.solvd.delivery.interfaces;
 
 public interface Rateable {
     float getTotalRating();
