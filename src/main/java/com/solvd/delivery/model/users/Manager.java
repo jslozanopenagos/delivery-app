@@ -1,7 +1,7 @@
 package com.solvd.delivery.model.users;
 
 import com.solvd.delivery.enums.UserRole;
-import com.solvd.delivery.interfaces.MenuManageable;
+import com.solvd.delivery.interfaces.IMenuManager;
 import com.solvd.delivery.model.foodEstablishments.MenuItem;
 import com.solvd.delivery.model.foodEstablishments.Restaurant;
 import com.solvd.delivery.model.foodEstablishments.FoodEstablishment;
@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Manager extends User implements MenuManageable {
+public class Manager extends User implements IMenuManager {
     private boolean isVerified;
     private List<FoodEstablishment> foodEstablishmentList;
     private static final Logger LOGGER = LogManager.getLogger(Manager.class);

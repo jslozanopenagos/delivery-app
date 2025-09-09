@@ -1,10 +1,10 @@
     package com.solvd.delivery.model.foodEstablishments;
 
-    import com.solvd.delivery.interfaces.Rateable;
+    import com.solvd.delivery.interfaces.IRateManager;
 
     import java.util.Set;
 
-    public class Restaurant extends FoodEstablishment implements Rateable {
+    public class Restaurant extends FoodEstablishment implements IRateManager {
         private String cuisineType;
 
         private float totalRating = 0f;

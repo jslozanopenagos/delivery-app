@@ -4,12 +4,12 @@ import com.solvd.delivery.enums.UserRole;
 import com.solvd.delivery.enums.VehicleType;
 import com.solvd.delivery.model.orders.Order;
 import com.solvd.delivery.model.locations.Location;
-import com.solvd.delivery.interfaces.Rateable;
+import com.solvd.delivery.interfaces.IRateManager;
 
 import java.util.*;
 
 
-public class Courier extends User implements Rateable{
+public class Courier extends User implements IRateManager {
     private Queue<Order> orders;
     private boolean available;
     private VehicleType vehicleType;

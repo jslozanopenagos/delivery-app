@@ -1,9 +1,9 @@
 package com.solvd.delivery.model.locations;
 
 import com.solvd.delivery.model.users.Customer;
-import com.solvd.delivery.interfaces.Trackable;
+import com.solvd.delivery.interfaces.ITrackPositionManager;
 
-public class CustomerLocation extends Location implements Trackable {
+public class CustomerLocation extends Location implements ITrackPositionManager {
     Customer customer;
 
     public CustomerLocation(

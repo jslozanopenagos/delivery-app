@@ -4,11 +4,11 @@ import com.solvd.delivery.enums.OrderStatus;
 import com.solvd.delivery.enums.PaymentMethod;
 import com.solvd.delivery.model.users.Courier;
 import com.solvd.delivery.model.users.Customer;
-import com.solvd.delivery.interfaces.Payable;
+import com.solvd.delivery.interfaces.IPaymentManager;
 
 import com.solvd.delivery.exceptions.PaymentProcessingException;
 
-public class DigitalPayment extends Payment implements Payable {
+public class DigitalPayment extends Payment implements IPaymentManager {
     Customer customer;
 
     Courier courier;
@@ -52,7 +52,7 @@ public class DigitalPayment extends Payment implements Payable {
 
     @Override
     public void processPayment(double amountReceived, double amountToPay) throws PaymentProcessingException {
-        if(!Payable.isValidAmount(amountReceived)){
+        if(!IPaymentManager.isValidAmount(amountReceived)){
             throw new PaymentProcessingException("Invalid amount of money.");
         }
 

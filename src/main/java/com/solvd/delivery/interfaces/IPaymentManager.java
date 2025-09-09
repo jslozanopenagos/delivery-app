@@ -2,7 +2,7 @@ package com.solvd.delivery.interfaces;
 
 import com.solvd.delivery.enums.OrderStatus;
 
-public interface Payable {
+public interface IPaymentManager {
     void processPayment(double amountReceived, double amountToPay);
 
     static boolean isValidAmount(double amount) {

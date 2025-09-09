@@ -2,12 +2,12 @@ package com.solvd.delivery.model.locations;
 
 import com.solvd.delivery.model.users.Courier;
 import com.solvd.delivery.model.users.Customer;
-import com.solvd.delivery.interfaces.Trackable;
+import com.solvd.delivery.interfaces.ITrackPositionManager;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class CourierLocation extends Location implements Trackable {
+public class CourierLocation extends Location implements ITrackPositionManager {
     private Courier courier;
     List<Customer> customer;
 
