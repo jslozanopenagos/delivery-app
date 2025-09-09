@@ -28,16 +28,18 @@ public class Repository<T> implements Repositable<T> {
 
     @Override
     public Optional<T> findById(long id) {
-        for (T e : storage) {
-            try {
-                long currentId = (long) e.getClass().getMethod("getId").invoke(e);
-                if (currentId == id) {
-                    return Optional.of(e);
-                }
-            } catch (Exception ex) {
-                LOGGER.error(ex.getMessage());
-            }
-        }
-        return Optional.empty();
+        return storage.stream()
+                .filter(e -> {
+                    try {
+                        long currentId = (long) e.getClass()
+                                .getMethod("getId")
+                                .invoke(e);
+                        return currentId == id;
+                    } catch (Exception ex) {
+                        LOGGER.error(ex.getMessage());
+                        return false;
+                    }
+                })
+                .findFirst();
     }
 }

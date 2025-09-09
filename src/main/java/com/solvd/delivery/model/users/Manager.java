@@ -6,13 +6,17 @@ import com.solvd.delivery.model.foodEstablishments.MenuItem;
 import com.solvd.delivery.model.foodEstablishments.Restaurant;
 import com.solvd.delivery.model.foodEstablishments.FoodEstablishment;
 
-import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Set;
+import java.util.List;
 import java.util.ArrayList;
 
 public class Manager extends User implements MenuManageable {
     private boolean isVerified;
     private List<FoodEstablishment> foodEstablishmentList;
+    private static final Logger LOGGER = LogManager.getLogger(Manager.class);
 
     public Manager(
             long id, String fullName,
@@ -48,12 +52,17 @@ public class Manager extends User implements MenuManageable {
     @Override
     public void addMenuItemToEstablishment(FoodEstablishment establishment, MenuItem item) {
         Set<MenuItem> items = establishment.getMenuItems();
-        for (MenuItem existingItem : items) {
-            if (existingItem.getName().equalsIgnoreCase(item.getName())) {
-                System.out.println("Item with the same name already exists!");
-                return;
-            }
+
+        boolean exists = items.stream()
+                .anyMatch(existingItem ->
+                        existingItem.getName().equalsIgnoreCase(item.getName())
+                );
+
+        if (exists) {
+            LOGGER.warn("Item with the same name already exists!");
+            return;
         }
+
         items.add(item);
         establishment.setMenuItems(items);
     }
@@ -67,20 +76,8 @@ public class Manager extends User implements MenuManageable {
 
     @Override
     public void updateMenuItemInEstablishment(FoodEstablishment establishment, MenuItem updatedItem) {
-        Set<MenuItem> items = establishment.getMenuItems();
-
-        MenuItem toRemove = null;
-        for (MenuItem item : items) {
-            if (item.getName().equalsIgnoreCase(updatedItem.getName())) {
-                toRemove = item;
-                break;
-            }
-        }
-
-        if (toRemove != null) {
-            items.remove(toRemove);
-            items.add(updatedItem);
-            establishment.setMenuItems(items);
+        if (establishment.getMenuItems().remove(updatedItem)) {
+            establishment.getMenuItems().add(updatedItem);
         } else {
             System.out.println("Item not found to update.");
         }
