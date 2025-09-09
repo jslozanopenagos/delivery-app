@@ -1,6 +1,6 @@
 package com.solvd.delivery.interfaces;
 
-public interface IRateManager {
+public interface IRateHandler {
     float getTotalRating();
     void setTotalRating(float totalRating);
 

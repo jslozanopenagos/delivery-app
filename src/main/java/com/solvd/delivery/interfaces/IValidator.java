@@ -1,4 +1,6 @@
 package com.solvd.delivery.interfaces;
 
-public interface IValidator {
+@FunctionalInterface
+public interface IValidator<T> {
+    boolean validate(T t);
 }

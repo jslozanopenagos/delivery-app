@@ -2,9 +2,9 @@ package com.solvd.delivery.model.payments;
 
 import com.solvd.delivery.enums.OrderStatus;
 import com.solvd.delivery.enums.PaymentMethod;
-import com.solvd.delivery.interfaces.IPaymentManager;
+import com.solvd.delivery.interfaces.IPaymentHandler;
 
-public abstract class Payment implements IPaymentManager {
+public abstract class Payment implements IPaymentHandler {
     private final long paymentID;
     private final long orderID;
     private final double amount;

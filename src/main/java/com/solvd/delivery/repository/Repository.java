@@ -1,6 +1,6 @@
 package com.solvd.delivery.repository;
 
-import com.solvd.delivery.interfaces.IRepositoryManager;
+import com.solvd.delivery.interfaces.IRepositoryHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class Repository<T> implements IRepositoryManager<T> {
+public class Repository<T> implements IRepositoryHandler<T> {
     private final List<T> storage = new ArrayList<>();
     protected static final Logger LOGGER = LogManager.getLogger(Repository.class);
 

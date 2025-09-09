@@ -3,13 +3,13 @@ package com.solvd.delivery.model.users;
 import com.solvd.delivery.enums.UserRole;
 import com.solvd.delivery.model.orders.Order;
 import com.solvd.delivery.enums.PaymentMethod;
-import com.solvd.delivery.interfaces.IOrderManager;
+import com.solvd.delivery.interfaces.IOrderHandler;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.ArrayList;
 
-public class Customer extends User implements IOrderManager {
+public class Customer extends User implements IOrderHandler {
     private boolean hasActiveOrder;
     private List<Order> orders;
     private String preferredAddress;

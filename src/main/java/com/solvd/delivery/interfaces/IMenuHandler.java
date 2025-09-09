@@ -5,7 +5,7 @@ import com.solvd.delivery.model.foodEstablishments.FoodEstablishment;
 
 import java.util.Set;
 
-public interface IMenuManager {
+public interface IMenuHandler {
     void addMenuItemToEstablishment(FoodEstablishment establishment, MenuItem item);
 
     void removeMenuItemFromEstablishment(FoodEstablishment establishment, String itemName);

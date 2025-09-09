@@ -1,12 +1,12 @@
 package com.solvd.delivery.model.foodEstablishments;
 
-import com.solvd.delivery.interfaces.IRateManager;
+import com.solvd.delivery.interfaces.IRateHandler;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class Supermarket extends FoodEstablishment implements IRateManager {
+public class Supermarket extends FoodEstablishment implements IRateHandler {
     private float totalRating = 0f;
     private int ratingCount = 0;
 

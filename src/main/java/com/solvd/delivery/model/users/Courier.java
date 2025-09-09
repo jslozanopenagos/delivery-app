@@ -4,12 +4,12 @@ import com.solvd.delivery.enums.UserRole;
 import com.solvd.delivery.enums.VehicleType;
 import com.solvd.delivery.model.orders.Order;
 import com.solvd.delivery.model.locations.Location;
-import com.solvd.delivery.interfaces.IRateManager;
+import com.solvd.delivery.interfaces.IRateHandler;
 
 import java.util.*;
 
 
-public class Courier extends User implements IRateManager {
+public class Courier extends User implements IRateHandler {
     private Queue<Order> orders;
     private boolean available;
     private VehicleType vehicleType;
