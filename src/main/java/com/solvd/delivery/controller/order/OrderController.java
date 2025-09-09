@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class OrderController {
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -58,13 +59,12 @@ public class OrderController {
 
             System.out.println("\n--- Available " + label.toLowerCase() + " ---");
 
-            for (int i = 0; i < establishmentsList.size(); i++) {
-                System.out.println(
-                        (i + 1) + ". " +
-                                establishmentsList.get(i).getName() +
-                                " - " + establishmentsList.get(i).getAddress()
-                );
-            }
+            IntStream.range(0, establishmentsList.size())
+                    .forEach(i -> System.out.println(
+                                    (i + 1) + ". " +
+                                    establishmentsList.get(i).getName() +
+                                    " - " + establishmentsList.get(i).getAddress()
+                    ));
 
             System.out.print("Choose a " + label + " to see its menu (only numbers): ");
             String input = SCANNER.nextLine();
@@ -99,19 +99,17 @@ public class OrderController {
             return;
         }
 
-        int itemCount = 0;
-
-        for (MenuItem item : menuItems) {
-            if (item != null && item.isAvailable()) {
-                System.out.println("- " + item.getName() +
+        long availableItems = menuItems.stream()
+                .filter(Objects::nonNull)
+                .filter(MenuItem::isAvailable)
+                .peek(item -> System.out.println(
+                                "- " + item.getName() +
                                 " ($" + item.getPrice() + "): " +
                                 item.getDescription()
-                );
-                itemCount++;
-            }
-        }
+                ))
+                .count();
 
-        if (itemCount == 0) {
+        if (availableItems == 0) {
             LOGGER.warn("No available menu items at the moment.\n");
         }
     }

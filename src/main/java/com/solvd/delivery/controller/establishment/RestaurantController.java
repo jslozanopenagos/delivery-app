@@ -95,12 +95,11 @@ public class RestaurantController extends FoodEstablishmentController {
         boolean isVegetarian = checkYesOrNo("is vegetarian");
 
         System.out.print("Enter menu item ingredients (comma separated): ");
-        List<String> ingredients = new ArrayList<>();
-        String[] inputIngredients = SCANNER.nextLine().split(",");
 
-        for (String ingredient : inputIngredients) {
-            ingredients.add(ingredient.trim());
-        }
+        List<String> ingredients = Arrays.stream(SCANNER.nextLine().split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
 
         System.out.print("Enter menu item possible extras (comma separated): ");
         List<String> extras = new ArrayList<>();

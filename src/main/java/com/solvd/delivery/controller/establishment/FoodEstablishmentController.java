@@ -6,6 +6,7 @@ import com.solvd.delivery.model.foodEstablishments.FoodEstablishment;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public abstract class FoodEstablishmentController {
     protected long menuItemId = 1;
@@ -20,9 +21,10 @@ public abstract class FoodEstablishmentController {
         }
 
         System.out.println("\n--- Select a food establishment ---");
-        for (int i = 0; i < establishments.size(); i++) {
-            System.out.println((i + 1) + ". " + establishments.get(i).getName());
-        }
+
+        IntStream.range(0, establishments.size())
+                .forEach(i -> System.out.println((i + 1) + ". " + establishments.get(i).getName()));
+
 
         System.out.print("Choose a food establishment [1-" + establishments.size() + "]: ");
         String input = SCANNER.nextLine();

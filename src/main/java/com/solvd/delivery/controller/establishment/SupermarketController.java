@@ -30,12 +30,10 @@ public class SupermarketController extends FoodEstablishmentController {
         String description = nonEmptyInput();
 
         System.out.print("Enter product categories (comma separated): ");
-        List<String> categories = new ArrayList<>();
-        String[] inputCategories = SCANNER.nextLine().split(",");
-
-        for (String cat : inputCategories) {
-            categories.add(cat.trim());
-        }
+        List<String> categories = Arrays.stream(SCANNER.nextLine().split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
 
         boolean isOpen =  checkYesOrNo("is your establishment open");
         boolean offersBulkDiscounts = checkYesOrNo("Offers bulk discounts");
@@ -92,12 +90,11 @@ public class SupermarketController extends FoodEstablishmentController {
         }
 
         System.out.print("Enter the possible categories for this product(comma separated): ");
-        List<String> productCategories = new ArrayList<>();
-        String[] inputCategories = SCANNER.nextLine().split(",");
 
-        for (String category : inputCategories) {
-            productCategories.add(category.trim());
-        }
+        List<String> productCategories = Arrays.stream(SCANNER.nextLine().split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
 
         SupermarketItem newItem = new SupermarketItem(
                 menuItemId++, supermarket.getId(),

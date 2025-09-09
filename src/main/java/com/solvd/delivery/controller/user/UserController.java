@@ -60,15 +60,15 @@ public abstract class UserController {
         System.out.print("Enter password: ");
         String password = SCANNER.nextLine();
 
-        for (User user : USERS) {
-            if (user.getFullName().equals(username) && user.getPassword().equals(password)) {
-                return Optional.of(user);
-            }
-        }
-
-        LOGGER.warn("Login failed for username '{}'", username);
-
-        return Optional.empty();
+        return USERS.stream()
+                .filter(user -> user.getFullName().equals(username) &&
+                        user.getPassword().equals(password))
+                .findFirst()
+                .map(Optional::of)
+                .orElseGet(() -> {
+                    LOGGER.warn("Login failed for username '{}'", username);
+                    return Optional.empty();
+                });
     }
 
     public String personalInfoInput(String label) {
