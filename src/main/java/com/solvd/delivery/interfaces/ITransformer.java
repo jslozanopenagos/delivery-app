@@ -1,6 +1,6 @@
 package com.solvd.delivery.interfaces;
 
 @FunctionalInterface
-public interface IActionHandler<T> {
-    void handle(T t);
+public interface ITransformer<T, R> {
+    R transform(T t);
 }

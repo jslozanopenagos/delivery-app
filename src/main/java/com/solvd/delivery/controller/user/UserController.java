@@ -1,6 +1,8 @@
 package com.solvd.delivery.controller.user;
 
 import com.solvd.delivery.model.users.*;
+import com.solvd.delivery.interfaces.IValidator;
+import com.solvd.delivery.interfaces.IActionHandler;
 import com.solvd.delivery.controller.session.DashboardLoaderController;
 
 import com.solvd.delivery.exceptions.DashboardNotFoundException;
@@ -60,12 +62,20 @@ public abstract class UserController {
         System.out.print("Enter password: ");
         String password = SCANNER.nextLine();
 
+        IValidator<User> loginValidator = user ->
+                user.getFullName().equals(username) && user.getPassword().equals(password);
+
+        IActionHandler<User> loginSuccessful = user ->
+                LOGGER.info("Login successful! Welcome, {}", user.getFullName());
+
         return USERS.stream()
-                .filter(user -> user.getFullName().equals(username) &&
-                        user.getPassword().equals(password))
+                .filter(loginValidator::validate)
                 .findFirst()
-                .map(Optional::of)
-                .orElseGet(() -> {
+                .map(user -> {
+                    loginSuccessful.handle(user);
+                    return user;
+                    })
+                .or(() -> {
                     LOGGER.warn("Login failed for username '{}'", username);
                     return Optional.empty();
                 });
