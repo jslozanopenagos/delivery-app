@@ -16,7 +16,7 @@ public class OrderController {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final Logger LOGGER = LogManager.getLogger(OrderController.class);
     private final PriorityQueue<Order> orderQueue = new PriorityQueue<>(
-            Comparator.comparing(Order::getDeliveryTime)
+            Comparator.comparing(Order::deliveryTime)
     );
 
     public void browseFoodEstablishments(Set<FoodEstablishment> foodEstablishments,
@@ -27,7 +27,7 @@ public class OrderController {
 
     public void addToOrderQueue(Order order) {
         orderQueue.add(order);
-        LOGGER.info("Order {} added", order.getOrderID());
+        LOGGER.info("Order {} added", order.orderID());
     }
 
     public Order nextOrder() {
@@ -38,7 +38,7 @@ public class OrderController {
         Order nextOrder = orderQueue.poll();
 
         if (nextOrder != null) {
-            LOGGER.info("Order {} processed", nextOrder.getOrderID());
+            LOGGER.info("Order {} processed", nextOrder.orderID());
         } else {
             LOGGER.info("No orders to process");
         }

@@ -1,6 +1,7 @@
 package com.solvd.delivery.controller.establishment;
 
 import com.solvd.delivery.model.users.Manager;
+import com.solvd.delivery.annotation.RequiresLogin;
 import com.solvd.delivery.model.foodEstablishments.MenuItem;
 import com.solvd.delivery.model.foodEstablishments.Restaurant;
 import com.solvd.delivery.model.foodEstablishments.FoodEstablishment;
@@ -14,6 +15,7 @@ public class RestaurantController extends FoodEstablishmentController {
     private long restaurantId = 1;
     private static final Set<FoodEstablishment> RESTAURANTS = new LinkedHashSet<>();
 
+    @RequiresLogin(roles = {"FOOD_ESTABLISHMENT_MANAGER"})
     public void createRestaurant(Manager manager) {
         System.out.println("--- Register a new restaurant ---");
 
@@ -55,6 +57,7 @@ public class RestaurantController extends FoodEstablishmentController {
         LOGGER.info("Restaurant registered successfully.");
     }
 
+    @RequiresLogin(roles = {"FOOD_ESTABLISHMENT_MANAGER"})
     public void createRestaurantMenuItem(Manager manager) {
         Restaurant restaurant = (Restaurant) selectFoodEstablishment(new ArrayList<>(RESTAURANTS));
 

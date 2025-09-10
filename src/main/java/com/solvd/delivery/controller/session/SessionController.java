@@ -1,6 +1,7 @@
 package com.solvd.delivery.controller.session;
 
 import com.solvd.delivery.model.users.*;
+import com.solvd.delivery.annotation.AnnotationProcessor;
 import com.solvd.delivery.controller.order.OrderController;
 import com.solvd.delivery.controller.establishment.RestaurantController;
 import com.solvd.delivery.controller.establishment.SupermarketController;
@@ -84,8 +85,14 @@ public class SessionController {
 
     private boolean handleManagerChoice(Manager manager, String choice) {
         switch (choice) {
-            case "1" -> restaurantService.createRestaurant(manager);
-            case "2" -> supermarketService.createSupermarket(manager);
+            case "1" -> {
+                AnnotationProcessor processor = new AnnotationProcessor();
+                processor.invoke(restaurantService, manager, "createRestaurant", manager);
+            }
+            case "2" -> {
+                AnnotationProcessor processor = new AnnotationProcessor();
+                processor.invoke(supermarketService, manager, "createSupermarket", manager);
+            }
             case "3" -> System.out.println("manage restaurants feature coming soon...");
             case "4" -> restaurantService.createRestaurantMenuItem(manager);
             case "5" -> { return true; }
