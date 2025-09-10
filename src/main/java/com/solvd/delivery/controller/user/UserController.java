@@ -2,6 +2,7 @@ package com.solvd.delivery.controller.user;
 
 import com.solvd.delivery.model.users.*;
 import com.solvd.delivery.interfaces.IValidator;
+import com.solvd.delivery.interfaces.ITransformer;
 import com.solvd.delivery.interfaces.IActionHandler;
 import com.solvd.delivery.controller.session.DashboardLoaderController;
 
@@ -68,13 +69,19 @@ public abstract class UserController {
         IActionHandler<User> loginSuccessful = user ->
                 LOGGER.info("Login successful! Welcome, {}", user.getFullName());
 
+        ITransformer<User, String> sessionTokenGenerator = user ->
+                        user.getFullName().replaceAll("\\s+", "").toLowerCase() +
+                        "_" + System.currentTimeMillis();
+
         return USERS.stream()
                 .filter(loginValidator::validate)
                 .findFirst()
                 .map(user -> {
                     loginSuccessful.handle(user);
+                    String sessionToken = sessionTokenGenerator.transform(user);
+                    LOGGER.info("Generated session token for {}: {}", user.getFullName(), sessionToken);
                     return user;
-                    })
+                })
                 .or(() -> {
                     LOGGER.warn("Login failed for username '{}'", username);
                     return Optional.empty();
