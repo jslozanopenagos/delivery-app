@@ -1,5 +1,6 @@
 package com.solvd.delivery;
 
+import com.solvd.delivery.config.ConfigurationManager;
 import com.solvd.delivery.controller.user.UserController;
 import com.solvd.delivery.controller.order.OrderController;
 import com.solvd.delivery.controller.session.SessionController;
@@ -35,6 +36,9 @@ public class Main {
         );
 
         boolean running = true;
+
+        String appName = ConfigurationManager.getInstance().getProperty("app.name");
+        LOGGER.info("Starting {}", appName);
 
         while (running) {
             String menuDashboard;
