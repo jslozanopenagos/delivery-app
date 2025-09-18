@@ -79,7 +79,7 @@ public class Manager extends User implements IMenuHandler {
         if (establishment.getMenuItems().remove(updatedItem)) {
             establishment.getMenuItems().add(updatedItem);
         } else {
-            System.out.println("Item not found to update.");
+            LOGGER.warn("Item not found to update.");
         }
     }
 

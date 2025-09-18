@@ -1,4 +1,5 @@
 [CUSTOMER]
+
 === Customer Interface ===
 1. Browse Restaurants
 2. View Orders
@@ -6,12 +7,14 @@
 4. Back to Main Menu
 -> Choose an option:
 [COURIER]
+
 === Courier Interface ===
 1. View Available Deliveries....feature coming soon
 2. View Completed Deliveries....feature coming soon
 3. Back to Main Menu
 -> Choose an option:
 [FOOD_ESTABLISHMENT_MANAGER]
+
 === Food Establishment Manager Interface ===
 1. Create a restaurant
 2. Create a supermarket
