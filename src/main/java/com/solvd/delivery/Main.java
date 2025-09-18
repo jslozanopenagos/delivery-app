@@ -37,8 +37,8 @@ public class Main {
 
         boolean running = true;
 
-        String appName = ConfigurationManager.getInstance().getProperty("app.name");
-        LOGGER.info("Starting {}", appName);
+        Thread monitorThread = startConfigMonitor();
+        monitorThread.start();
 
         while (running) {
             String menuDashboard;
@@ -84,5 +84,25 @@ public class Main {
                 default -> LOGGER.warn("Invalid option. Please try again.\n");
             }
         }
+    }
+
+    private static Thread startConfigMonitor() {
+        Runnable configLogger = () -> {
+            ConfigurationManager config = ConfigurationManager.getInstance();
+            while (true) {
+                try {
+                    String appName = config.getProperty("app.name");
+                    LOGGER.info("[Background Monitor] Running '{}'", appName);
+                    Thread.sleep(15000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        };
+
+        Thread monitorThread = new Thread(configLogger, "Config-Monitor");
+        monitorThread.setDaemon(true);
+        return monitorThread;
     }
 }
